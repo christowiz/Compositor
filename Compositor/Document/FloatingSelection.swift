@@ -118,7 +118,7 @@ nonisolated enum FloatingMerge {
     /// Draws the floating pixels (with their transform) onto the source layer's own pixel
     /// grid, growing the layer where they now extend past it. A mask grows with it, revealing
     /// the new area.
-    static func merge(_ pixels: CGImage, transform: LayerTransform, into source: ImageLayer)
+    @MainActor static func merge(_ pixels: CGImage, transform: LayerTransform, into source: ImageLayer)
         throws -> (asset: ImportedImage, transform: LayerTransform, mask: LayerMask?) {
         guard let sourceImage = source.asset?.image else { throw ProjectError.invalid }
         let width = sourceImage.width, height = sourceImage.height
